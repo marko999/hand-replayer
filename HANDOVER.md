@@ -1,21 +1,28 @@
-# Hand Replayer — current state
+# Hand Replayer — completed phase one
 
-## Scope and implementation
-English PokerStars standard No-Limit Hold'em, cash/tournament, 2–9 players. Complete single hand at a time; local browser processing. React/TypeScript/Vite; parser → normalized events → deterministic snapshots → independently themed UI. No deployment, other rooms, hand builder, export or forum plugin.
+Updated 5 September 2026. Canonical checkout: `/Users/m1/Documents/Codex/2026-09-04/hand-replayer`.
 
-Engine/parser, evaluator, responsive UI, independent adversarial tests and forum research are implemented. Two public source-derived anonymized fixtures have verified MIT attribution; other fixtures are original synthetic cases. Summary-only hole cards reveal at their own late event.
+## Delivered scope
+Complete English PokerStars standard No-Limit Hold'em, cash/tournament, 2–9 players, one hand at a time. Browser-local paste/file import, validation and deterministic replay. Play/pause/speed/step/timeline/street jumps, correct reveal timing, side pots, stacks/wagers, responsive table and independent Midnight/Forest themes.
 
-## Verified
-- 91 automated tests pass, including61 independent adversarial tests and exhaustive2,598,960 five-card ranking distribution.
-- TypeScript/Vite production build passes. npm dependency audit clean at installation.
-- Desktop and390/320 phone browser QA: import, playback/speed/pause, step/seek, reveal/backward privacy, street jumps, side-pot labels, all2–9 seat layouts and9 simultaneous street wagers. Corrections rechecked.
-- Details: docs/QA.md, docs/COVERAGE.md, docs/FIXTURE-SOURCES.md, docs/FORUM-INTEGRATION.md.
+Parser → normalized events → snapshots → UI, with a separate evaluator. Two anonymized public source-derived fixtures have verified MIT attribution; other fixtures are original synthetic cases. Read-only forum research is complete. No public deployment, other rooms, builder, export or plugin.
 
-## Git and runtime
-Last confirmed pushed checkpoint: ee9886b (scaffold/evaluator). Full app integration is being committed next; root alone runs Git. Canonical checkout: /Users/m1/Documents/Codex/2026-09-04/hand-replayer. Vite dev server: http://127.0.0.1:5173 (session92698).
+## Acceptance evidence
+- `npm test`: **91 passing tests**, including 61 independent adversarial cases, 16 core tests, 14 evaluator tests. Exhaustive distribution of all 2,598,960 five-card combinations verified.
+- `npm run build`: strict TypeScript and production Vite bundle pass. Installed dependency audit reported zero findings.
+- Actual Chromium browser QA: desktop, 390×844, 320×740. Paste/file import, all three diagnostic categories and recovery, playback/pause/speed, stepping/seek, street jumps, known-card privacy including summary reveal, theme switch and final balances verified.
+- All 2–9 player phone layouts measured with no seat/board or seat/seat intersections and no horizontal overflow. Nine simultaneous street wagers also have no intersections with other seats/board/pot after corrections.
+- Production preview imports the public cash fixture; late summary reveal and backward hiding verified, correct final stack, no captured console warnings/errors.
+- [QA and screenshots](docs/QA.md), [coverage/limits](docs/COVERAGE.md), [fixture sources](docs/FIXTURE-SOURCES.md), [forum plan](docs/FORUM-INTEGRATION.md), [architecture](docs/ARCHITECTURE.md).
 
-## Limits
-One English standard hand, no unusual rooms/variants/dead blinds/multi-board/big-blind ante.2MiB/10,000line input limit; supported currencies USD/EUR/GBP/play chips. Multiple pots require explicit main/side payout labels. Unknown cards and authenticity remain unverifiable. See coverage for exact boundaries.
+## Git / runtime
+- Initial repository: `86633bc2e32318049f2267d3bdaaf85b4bfca4e1`.
+- Tested scaffold/evaluator pushed: `ee9886b`.
+- Full tested implementation pushed and independently verified with `git ls-remote`: **`3572a5d544e136e6b4054779b93b2ecf78c704bb`**. This handover/documentation checkpoint follows it; use `git log -1` for its own SHA.
+- Dev: http://127.0.0.1:5173 (session 92698). Production preview: http://127.0.0.1:4173 (session 91998). These are local processes, not hosted deployments.
+- Restart: `npm ci && npm run dev`; verify: `npm test && npm run build`.
 
-## Next
-Finish final production-preview/summary-reveal browser checks, save QA screenshots, commit/push coherent integration, independently verify remote SHA and finish documentation push. No user approval needed for already-authorized source pushes. Public deployment remains outside scope.
+## Remaining limits and next step
+Only the declared initial grammar: no Zoom/Home Game headers, other variants, dead/combined blinds, multi-board, big-blind ante or unusual currencies. Limits: 2 MiB / 10,000 lines. Multiple distinct pots require explicit main/side payout labels. Unknown cards, authenticity and room rake-policy correctness cannot be established. Physical iOS/Safari/Android are not certified; phone viewport testing is not a physical-device claim. Exact limits are documented in coverage.
+
+No unresolved implementation blocker remains for this phase. Next user action: review the local demo and optionally supply additional anonymized standard PokerStars histories for corpus expansion. Other rooms, public deployment, sharing/export and forum integration require a separate scope decision.
