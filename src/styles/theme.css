@@ -1,0 +1,49 @@
+/* Table presentation is token driven. Add a theme here without changing the engine. */
+:root {
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #e4ecef;
+  background: #0c1117;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: dark;
+}
+
+.app {
+  --page: #0c1117;
+  --surface: #121a22;
+  --surface-raised: #1b2630;
+  --border: #28343e;
+  --text: #e4ecef;
+  --muted: #9baab6;
+  --subtle: #788b99;
+  --accent: #a8e7d5;
+  --accent-strong: #79d4bc;
+  --accent-ink: #16372e;
+  --felt: #1c3d42;
+  --felt-edge: #142f36;
+  --rail: #26303a;
+  --rail-line: #46515b;
+  --seat: #202c37;
+  --seat-border: #45505c;
+  --card-back: #304b60;
+  --chip: #cfb882;
+  --table-scene: #111b24;
+  min-height: 100vh;
+  color: var(--text);
+  background: var(--page);
+}
+
+.app[data-theme="forest"] {
+  --accent: #cee1a4;
+  --accent-strong: #abc779;
+  --accent-ink: #283919;
+  --felt: #294735;
+  --felt-edge: #1b3227;
+  --rail: #34332b;
+  --rail-line: #5f5948;
+  --card-back: #47543b;
+  --chip: #dec493;
+  --table-scene: #161e1b;
+}
