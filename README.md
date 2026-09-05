@@ -4,6 +4,10 @@ A local browser replayer for complete **English PokerStars No-Limit Hold'em** ha
 
 Phase one is implemented. This is an independently tested initial release with a deliberately limited grammar, **not universal PokerStars format support**. It is not affiliated with PokerStars and does not verify a history's authenticity.
 
+## Hosted demo
+
+[Open Hand Replayer](https://hand-replayer.marko99999.chatgpt.site). The deployment was published with private owner-only access; the owner manages Sites sharing. Processing remains local in your browser.
+
 ## Run locally
 
 Requires Node.js 22.12+ (or 20.19+) and npm. Tested on Node 25.2.1.
